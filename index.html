@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Hotel & Restaurant - Sector 48, Sonipat</title>
+    <!-- Premium Google Fonts: Playfair Display for headers, Poppins for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Identity: Premium Culinary Crimson & Warm Amber Gold */
+            --primary: #8D2B1F;       /* Culinary Crimson */
+            --primary-hover: #732218;
+            --accent: #D97706;        /* Warm Golden Amber */
+            --accent-hover: #B45309;
+            --bg-light: #FAF6EE;      /* Soft Vanilla Cream */
+            --bg-dark: #2A1612;       /* Rich Espresso Cocoa */
+            --bg-card: #FFFFFF;
+            --text-main: #2D1E1B;     /* Dark Coffee */
+            --text-muted: #6B5C58;    /* Warm Muted Gray */
+            --text-light: #FAF6EE;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            
+            /* Transitions & Shadows */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 4px rgba(45, 30, 27, 0.05);
+            --shadow-md: 0 6px 15px rgba(45, 30, 27, 0.08);
+            --shadow-lg: 0 12px 28px rgba(45, 30, 27, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(250, 246, 238, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(141, 43, 31, 0.08);
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(42, 22, 18, 0.78), rgba(141, 43, 31, 0.55)),
+                        url('restaurants.webp') center/cover no-repeat fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            max-width: 750px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .hero-btn {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 14px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out 0.6s;
+            animation-fill-mode: both;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 85px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-style: italic;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            border: 6px solid #fff;
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .about-text h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #F3ECE0; /* Cozy Warm Vanilla Tint */
+            border-top: 1px solid rgba(141, 43, 31, 0.05);
+            border-bottom: 1px solid rgba(141, 43, 31, 0.05);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(141, 43, 31, 0.04);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(141, 43, 31, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            width: 65px;
+            height: 65px;
+            line-height: 65px;
+            background-color: rgba(141, 43, 31, 0.06);
+            color: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 22px auto;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background-color: var(--primary);
+            color: var(--bg-light);
+            transform: rotateY(180deg);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--bg-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 250px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(141, 43, 31, 0.05);
+            transition: var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(42, 22, 18, 0.95), rgba(42, 22, 18, 0.4), transparent);
+            color: #fff;
+            padding: 22px 18px;
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background-color: #F3ECE0;
+            border-top: 1px solid rgba(141, 43, 31, 0.05);
+            border-bottom: 1px solid rgba(141, 43, 31, 0.05);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(141, 43, 31, 0.04);
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            margin-right: 15px;
+            box-shadow: 0 4px 10px rgba(141, 43, 31, 0.2);
+        }
+
+        .reviewer-info h4 {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 50px;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background-color: var(--bg-dark);
+            color: var(--bg-light);
+            padding: 45px 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-right: 20px;
+            margin-top: 3px;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .contact-item p {
+            opacity: 0.85;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            padding: 10px 10px;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-display);
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(141, 43, 31, 0.15);
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(141, 43, 31, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(141, 43, 31, 0.2);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(141, 43, 31, 0.35);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--bg-light);
+            text-align: center;
+            padding: 40px 5%;
+            border-top: 1px solid rgba(250, 246, 238, 0.05);
+        }
+
+        footer p {
+            opacity: 0.75;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-light);
+                flex-direction: column;
+                padding: 25px;
+                box-shadow: var(--shadow-md);
+                border-bottom: 1px solid rgba(141, 43, 31, 0.08);
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Krishna <span>Hotel & Restaurant</span></div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Krishna Hotel</h1>
+        <p>Your Comfortable Stay & Premium Multi-Cuisine Dining Destination in Sonipat</p>
+        <a href="#contact" class="hero-btn">Book Your Stay / Table</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Serving quality hospitality and delicious flavors since 2010</p>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="hotel-krishna.jpg" alt="Krishna Hotel Lobby & Reception">
+            </div>
+            <div class="about-text">
+                <h3>Experience True Hospitality</h3>
+                <p>Krishna Hotel is a well-known local boutique hotel and restaurant located in Sector 48, Sonipat, Haryana. We have been welcoming our guests with comfortable accommodations and mouth-watering flavors for over a decade.</p>
+                <p>Our hotel offers clean, beautifully styled rooms with modern amenities at competitive prices. Our restaurant serves a rich menu of authentic North Indian, South Indian, and Chinese dishes prepared by master chefs using select ingredients.</p>
+                <p>Whether you are a traveler seeking peaceful accommodation or a family looking to enjoy an exceptional fine-dining dinner, Krishna Hotel welcomes you with absolute warmth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Everything you need for an elite culinary and hospitality experience</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🛏️</div>
+                <h3>Comfortable Rooms</h3>
+                <p>Clean and spacious AC/Non-AC rooms with attached bathroom, TV, and 24/7 hot water supply.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍽️</div>
+                <h3>Multi-Cuisine Restaurant</h3>
+                <p>Enjoy delicious North Indian, South Indian, Chinese, and Continental dishes prepared fresh daily.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍴</div>
+                <h3>Dine-In Service</h3>
+                <p>Comfortable dining area for families and groups. Perfect for celebrations and casual meals.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Takeaway & Parcel</h3>
+                <p>Order your favorite dishes and take them home. Quick packaging and fresh food guaranteed.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🅿️</div>
+                <h3>Free Parking</h3>
+                <p>Spacious and secure parking area available for all our guests at no extra charge.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📶</div>
+                <h3>Free WiFi</h3>
+                <p>High-speed internet connectivity available in all rooms and common areas for our guests.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-title">
+            <h2>Photo Gallery</h2>
+            <p>Take a look at our deluxe rooms and culinary creations</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="hotel room.avif" alt="Deluxe Room">
+                <div class="gallery-caption">Deluxe Room</div>
+            </div>
+            <div class="gallery-item">
+                <img src="area.jpg" alt="Restaurant Area">
+                <div class="gallery-caption">Restaurant Area</div>
+            </div>
+            <div class="gallery-item">
+                <img src="north indian food.jpg" alt="North Indian Thali">
+                <div class="gallery-caption">North Indian Thali</div>
+            </div>
+            <div class="gallery-item">
+                <img src="panner dish.jpg" alt="Paneer Special">
+                <div class="gallery-caption">Paneer Special</div>
+            </div>
+            <div class="gallery-item">
+                <img src="biryani.webp" alt="Chicken Biryani">
+                <div class="gallery-caption">Chicken Biryani</div>
+            </div>
+            <div class="gallery-item">
+                <img src="chinese.webp" alt="Chinese Special">
+                <div class="gallery-caption">Chinese Special</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-title">
+            <h2>Customer Reviews</h2>
+            <p>What our guests say about us</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">RS</div>
+                    <div class="reviewer-info">
+                        <h4>Rajesh Sharma</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Excellent hotel with very clean rooms. The food quality is amazing, especially the butter chicken and dal makhani. Staff is very polite and helpful. Highly recommended!"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">PK</div>
+                    <div class="reviewer-info">
+                        <h4>Priya Kumari</h4>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+                </div>
+                <p class="review-text">"We visited for a family dinner and had a wonderful experience. The paneer dishes were delicious and the service was quick. The prices are very reasonable for the quality offered."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-avatar">AV</div>
+                    <div class="reviewer-info">
+                        <h4>Amit Verma</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"I stayed here for 3 days during my business trip. The room was comfortable with all basic amenities. The restaurant serves good breakfast and the location is convenient. Will stay again!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us to book a room or a dining table</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <h4>Address</h4>
+                        <p>Krishna Hotel, Main Market,<br>Sector 48, Sonipat,<br>Haryana - 131001, India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210<br>+91 0130-2XXXXXX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@krishnahotel.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🕐</span>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Hotel: 24 Hours (Check-in: 12 PM)<br>Restaurant: 7:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Krishna Hotel & Multi-Cuisine Restaurant, Sector 48, Sonipat. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
